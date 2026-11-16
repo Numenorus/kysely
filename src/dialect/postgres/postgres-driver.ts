@@ -116,6 +116,14 @@ export class PostgresDriver implements Driver {
     }
   }
 
+  async prepareTransaction(connection: DatabaseConnection, name: string): Promise<void> {
+    try {
+      await connection.executeQuery(CompiledQuery.raw(`prepare transaction ${name}`))
+    } catch (err) {
+      throw err
+    }
+  }
+
   async savepoint(
     connection: DatabaseConnection,
     savepointName: string,

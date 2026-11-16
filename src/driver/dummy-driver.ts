@@ -55,6 +55,10 @@ export class DummyDriver implements Driver {
     // Nothing to do here.
   }
 
+  async prepareTransaction(): Promise<void> {
+    // Nothing to do here.
+  }
+
   async rollbackTransaction(): Promise<void> {
     // Nothing to do here.
   }

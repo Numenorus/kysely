@@ -106,6 +106,10 @@ export class PGliteDriver implements Driver {
     await connection[PRIVATE_ROLLBACK_TRANSACTION_METHOD]()
   }
 
+  async prepareTransaction(): Promise<void> {
+    throw new Error('prepared transactions are not supported by PGlite');
+  }
+
   async savepoint(
     connection: DatabaseConnection,
     savepointName: string,

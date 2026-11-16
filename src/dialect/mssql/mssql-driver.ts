@@ -86,6 +86,10 @@ export class MssqlDriver implements Driver {
     await connection.rollbackTransaction()
   }
 
+  async prepareTransaction(connection: DatabaseConnection, name: string): Promise<void> {
+    throw new Error('prepared transactions are not supported by MySQL');
+  }
+
   async savepoint(
     connection: MssqlConnection,
     savepointName: string,

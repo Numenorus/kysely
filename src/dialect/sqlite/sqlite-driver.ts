@@ -53,6 +53,10 @@ export class SqliteDriver implements Driver {
     await connection.executeQuery(CompiledQuery.raw('rollback'))
   }
 
+  async prepareTransaction(): Promise<void> {
+    throw new Error('prepared transactions are not supported by Sqlite');
+  }
+
   async savepoint(
     connection: DatabaseConnection,
     savepointName: string,

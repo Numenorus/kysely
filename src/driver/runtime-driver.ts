@@ -125,6 +125,10 @@ export class RuntimeDriver implements Driver {
     return await this.#driver.commitTransaction(connection)
   }
 
+  async prepareTransaction(connection: DatabaseConnection, name: string): Promise<void> {
+    return await this.#driver.prepareTransaction(connection, name)
+  }
+
   async rollbackTransaction(connection: DatabaseConnection): Promise<void> {
     return await this.#driver.rollbackTransaction(connection)
   }

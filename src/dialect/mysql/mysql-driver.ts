@@ -97,6 +97,10 @@ export class MysqlDriver implements Driver {
     await connection.executeQuery(CompiledQuery.raw('rollback'))
   }
 
+  async prepareTransaction(): Promise<void> {
+    throw new Error('prepared transactions are not supported by MySQL');
+  }
+
   async savepoint(
     connection: DatabaseConnection,
     savepointName: string,

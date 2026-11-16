@@ -41,6 +41,14 @@ export interface Driver {
   commitTransaction(connection: DatabaseConnection): Promise<void>
 
   /**
+   * Prepares transaction for two-phase commit
+   * 
+   * Throws {@link AbortedTransactionError} if the database confirms that
+   * the transaction was rolled back instead of prepared.
+   */
+  prepareTransaction(connection: DatabaseConnection, name: string): Promise<void>
+
+  /**
    * Rolls back a transaction.
    */
   rollbackTransaction(connection: DatabaseConnection): Promise<void>
